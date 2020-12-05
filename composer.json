@@ -1,0 +1,17 @@
+{
+    "name": "pc-home/proyectonegociovol4",
+    "description": "negocio web4",
+    "type": "project",
+    "authors": [
+        {
+            "name": "azulemaportillo25",
+            "email": "portillolaparraazulema5@gmail.com"
+        }
+    ],
+    "require": {
+        "illuminate/database": "^8.16",
+        "illuminate/events": "^8.16",
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.2"
+    }
+}

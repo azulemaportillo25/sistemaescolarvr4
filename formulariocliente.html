@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página de Artesanías en Madera</title>
+        <link href="node_modules/bulma/css/bulma.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="colors.css">
+        <script src="node_modules/axios/dist/axios.min.js"></script><!--link de axios-->
+    </head>
+    <body class='colorpagina'>
+        <div data-role='header' id="encabezado">
+            <div class="columns">
+                <div class="column">
+                    <div class="columns is-mobile">
+                        <div class="column is-11 is-offset-6">
+                            <figure class="image is-128x128"><img src="imagenes/imagen24.jpg" class="imagen"></figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="column letra">
+                    <p class=" has-background-danger-dark title is-1 has-text-link is-italic has-text-centered">Artesanías en Madera</p>
+                </div>
+                <div class="column">
+                    <div class="columns is-mobile">
+                        <div class="column is-4 is-offset-1">
+                            <figure class="image is-128x128"><img src="imagenes/imagen29.jpg" class="imagen"></figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!--Card--> 
+        <div class="centrado centrarCar">
+            <div class="tile is-ancestor">
+                <div class="tile is-vertical is-8 centrarCar">
+                    <div class="tile">
+                        <div class="tile is-parent is-vertical">
+                            <article class="tile is-child notification is-primary">
+                                <p class="title centrado">Formulario de registro</p>
+                                <br>
+
+                                 <!--formulario-->
+                                <form method="post" action="insertarpersonas.php">
+                                    <div class="centrado">
+                                        <label class="label" for="nombre">Nombres:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input" id="nombre" name="nombre">
+                                    </div><br>
+                                    <div class="centrado">
+                                        <label class="label" for="apellido">Apellidos:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input" id="apellido" name="apellido">
+                                    </div><br>
+                                    <div class="centrado">
+                                        <label class="label" for="nombres_de_usuarios">Nombre de usuario:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input" id="nombres_de_usuarios" name="nombres_de_usuarios">
+                                    </div><br>
+                                    <div class="centrado">
+                                        <label class="label" for="password">Contraseña:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input" id="password" name="password">
+                                    </div><br>
+                                    <div class="centrado">
+                                        <label class="label" for="edad">Años:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input"  id="edad" name="edad">
+                                    </div><br>
+                                    <div class="centrado">
+                                        <label class="label" for="correo">Correo:</label>
+                                        <input class="input is-rounded" type="text" placeholder="Rounded input"  id="correo" name="correo">
+                                    </div><br>
+                                    <button type="button"class="button is-danger is-outlined" onclick="insertarpersonas()">Guardar datos</button>
+                                </form>
+
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <script>
+            function insertarpersonas (){
+                axios.post('api/index.php/insertarpersonas', {
+                    nombre: document.forms[0].nombre.value,
+                    apellido: document.forms[0].apellido.value,
+                    nombres_de_usuarios: document.forms[0].nombres_de_usuarios.value,
+                    password: document.forms[0].password.value,
+                    edad: document.forms[0].edad.value,
+                    correo: document.forms[0].correo.value,
+                }).then(resp => {
+                    alert(`Se han insertado correctamente los datos`)
+                    setTimeout(`location. href='Secciones.html'`, 500)
+                    console.log(resp)
+                }).catch(error => {
+                    alert(`Los datos no se han ingresado correctamente, vuelva a intentarlo`)
+                    console.log(error)
+                });
+            }
+        </script>
+
+    </body>
+</html>
